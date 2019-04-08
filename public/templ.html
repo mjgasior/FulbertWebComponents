@@ -4,62 +4,32 @@
     <title>Templates</title>
   </head>
   <body>
-    <template id="book-template">
-      <li><span class="title"></span> &mdash; <span class="author"></span></li>
+    <template id="template">
+      <script>
+        const button = document.getElementById("click-me");
+        button.addEventListener("click", event => alert(event));
+      </script>
+      <style>
+        #click-me {
+          all: unset;
+          background: tomato;
+          border: 0;
+          border-radius: 4px;
+          color: white;
+          font-family: Helvetica;
+          font-size: 1.5rem;
+          padding: 0.5rem 1rem;
+        }
+      </style>
+      <button id="click-me">Log click event</button>
     </template>
 
-    <template id="book-template-2">
-      <li>
-        <span class="author"></span>'s classic novel <span class="title"></span>
-      </li>
-    </template>
-
-    <ul id="books"></ul>
-
-    <fieldset id="templates">
-      <legend>Choose template</legend>
-
-      <label>
-        <input type="radio" name="template" value="book-template" checked />
-        Template One
-      </label>
-      <label>
-        <input type="radio" name="template" value="book-template-2" /> Template
-        Two
-      </label>
-    </fieldset>
+    <div>This is crazy!</div>
 
     <script>
-      const books = [
-        { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-        { title: "A Farewell to Arms", author: "Ernest Hemingway" },
-        { title: "Catch 22", author: "Joseph Heller" }
-      ];
+      const template = document.getElementById("template");
 
-      function appendBooks(templateId) {
-        const booksList = document.getElementById("books");
-        const fragment = document.getElementById(templateId);
-
-        // Clear out the content from the ul
-        booksList.innerHTML = "";
-
-        // Loop over the books and modify the given template
-        books.forEach(book => {
-          // Create an instance of the template content
-          const instance = document.importNode(fragment.content, true);
-          // Add relevant content to the template
-          instance.querySelector(".title").innerHTML = book.title;
-          instance.querySelector(".author").innerHTML = book.author;
-          // Append the instance ot the DOM
-          booksList.appendChild(instance);
-        });
-      }
-
-      document
-        .getElementById("templates")
-        .addEventListener("change", event => appendBooks(event.target.value));
-
-      appendBooks("book-template");
+      document.body.appendChild(document.importNode(template.content, true));
     </script>
   </body>
 </html>
