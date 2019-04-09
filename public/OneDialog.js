@@ -1,12 +1,10 @@
 class OneDialog extends HTMLElement {
-  static get observedAttributes() {
+  static get boundAttributes() {
     return ['open'];
   }
   
   attributeChangedCallback(attrName, oldValue, newValue) {
-    if (newValue !== oldValue) {
-      this[attrName] = this.hasAttribute(attrName);
-    }
+    this[attrName] = this.hasAttribute(attrName);
   }
   
   connectedCallback() {
@@ -14,7 +12,18 @@ class OneDialog extends HTMLElement {
     const node = document.importNode(template.content, true);
     this.appendChild(node);
   }
+  
+  get open() {
+    return this.hasAttribute('open');
+  }
+  
+  set open(isOpen) {
+    if (isOpen) {
+      this.setAttribute('open', true);
+    } else {
+      this.removeAttribute('open');
+    }
+  }
 }
-
 
 customElements.define('one-dialog', OneDialog);
