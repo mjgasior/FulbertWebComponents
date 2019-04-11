@@ -1,4 +1,4 @@
-Web Components with React
+Trying out Web Components with React
 
 - https://css-tricks.com/an-introduction-to-web-components/
 - https://reactjs.org/docs/web-components.html
