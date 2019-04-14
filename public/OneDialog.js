@@ -1,28 +1,42 @@
 class OneDialog extends HTMLElement {
+  static get observedAttributes() {
+    return ['open'];
+  }
+  
   constructor() {
     super();
     this.close = this.close.bind(this);
   }
-
-  static get boundAttributes() {
-    return ['open'];
-  }
-
+  
   attributeChangedCallback(attrName, oldValue, newValue) {
-    this[attrName] = this.hasAttribute(attrName);
+    if (oldValue !== newValue) {
+      this[attrName] = this.hasAttribute(attrName);
+    }
   }
 
   connectedCallback() {
-    const template = document.getElementById('one-dialog');
+    const template = document.getElementById('dialog-template');
     const node = document.importNode(template.content, true);
     this.appendChild(node);
+    
+    
+    this.querySelector('button').addEventListener('click', this.close);
+    this.querySelector('.overlay').addEventListener('click', this.close);
+    this.open = this.open;
   }
-
+  
+  disconnectedCallback() {
+    this.querySelector('button').removeEventListener('click', this.close);
+    this.querySelector('.overlay').removeEventListener('click', this.close);
+  }
+  
+  
   get open() {
     return this.hasAttribute('open');
   }
-
-  set open(isOpen) {
+  
+  
+set open(isOpen) {
     this.querySelector('.wrapper').classList.toggle('open', isOpen);
     this.querySelector('.wrapper').setAttribute('aria-hidden', !isOpen);
     if (isOpen) {
@@ -38,7 +52,8 @@ class OneDialog extends HTMLElement {
       this.close();
     }
   }
-
+  
+  
   close() {
     if (this.open !== false) {
       this.open = false;
@@ -46,10 +61,10 @@ class OneDialog extends HTMLElement {
     const closeEvent = new CustomEvent('dialog-closed');
     this.dispatchEvent(closeEvent);
   }
-
+  
   _watchEscape(event) {
     if (event.key === 'Escape') {
-      this.close();
+        this.close();   
     }
   }
 }
