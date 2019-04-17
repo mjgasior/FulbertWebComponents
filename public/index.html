@@ -10,8 +10,23 @@
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
+    <script>
+      class MyComponent extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = `<h1>Hello world in my custom component</h1>`;
+        }
+      }
+
+      customElements.define("my-component", MyComponent);
+
+      function myFunction() {
+        document.getElementById("root").innerHTML = "Paragraph changed.";
+      }
+    </script>
   </head>
   <body>
+    <button type="button" onclick="myFunction()">Try it</button>
+    <my-component></my-component>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
