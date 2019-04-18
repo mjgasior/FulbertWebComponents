@@ -1,3 +1,27 @@
+## Getting Started
+
+Install React stuff:
+
+```bash
+yarn
+```
+
+switch the directory to fulbertstencil and install the Stencil stuff:
+
+```bash
+cd fulbertstencil
+yarn
+```
+
+Get back to the main directory and run start the app:
+
+```bash
+cd ..
+yarn start
+```
+
+This will start the React host server (localhost:3000) and Stencil host server (localhost:3333).
+
 Trying out Web Components with React:
 - https://css-tricks.com/an-introduction-to-web-components/
 - https://reactjs.org/docs/web-components.html
