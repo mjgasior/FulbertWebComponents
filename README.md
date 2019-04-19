@@ -1,4 +1,4 @@
-Trying out Web Components with React:
+## Trying out Web Components with React:
 
 - https://css-tricks.com/an-introduction-to-web-components/
 - https://reactjs.org/docs/web-components.html
@@ -8,8 +8,12 @@ Trying out Web Components with React:
 - https://rangle.io/blog/web-components-part-1/
 - https://stenciljs.com/
 
-Micro Frontends:
+## Micro Frontends:
 
 - https://micro-frontends.org
 - https://medium.embengineering.com/micro-front-end-and-web-components-ce6ae87c3b7f
 - https://rangle.io/blog/five-things-to-consider-before-choosing-micro-frontends/
+
+## Additional links:
+
+[How to change the localhost port on different OS](https://stackoverflow.com/questions/40714583/how-to-specify-a-port-to-run-a-create-react-app-based-project)
