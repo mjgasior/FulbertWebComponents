@@ -10,8 +10,20 @@
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
+    <script>
+      class AppWrap extends HTMLElement {
+        connectedCallback() {
+          this.innerHTML = `
+          <p>Hello from React Web Component wrapper</p>
+        `;
+        }
+      }
+
+      customElements.define("app-wrap", AppWrap);
+    </script>
   </head>
   <body>
+    <app-wrap></app-wrap>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
