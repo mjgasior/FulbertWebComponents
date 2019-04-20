@@ -2,4 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+class AppWrap extends HTMLElement {
+  connectedCallback() {
+    console.log("ReactApp connected");
+    this.render();
+  }
+
+  render() {
+    ReactDOM.render(<App />, this);
+  }
+}
+
+customElements.define("app-wrap", AppWrap);
